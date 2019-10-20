@@ -1,0 +1,98 @@
+version: '3'
+services:
+  # web:
+  #   container_name: django
+  #   image: django4demo
+  #   build:
+  #     context: web
+  #   environment:
+  #       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+  #       POSTGRES_USER: ${POSTGRES_USER}
+  #       POSTGRES_PROT: ${POSTGRES_PROT}
+  #       POSTGRES_DB: ${POSTGRES_DB}
+  #       DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
+  #       DJANGO_SUPERUSER: ${DJANGO_SUPERUSER}
+  #       DJANGO_SUPEREMAIL: ${DJANGO_SUPEREMAIL}
+  #       DJANGO_SUPERPWD: ${DJANGO_SUPERPWD}
+  #   volumes:
+  #     - D:/docker/coffee/web/django/:/var/django
+  #     - D:/docker/coffee/web/settings.py:/var/django/Django/settings.py
+  #     - D:/docker/coffee/web/django/entrypoint.sh:/var/django/entrypoint.sh
+  #   command: ./entrypoint.sh
+  #   depends_on:
+  #     - dbadmin
+  #   ports:
+  #     - "8000:8000"
+  #   networks:
+  #     - net
+  db:
+    container_name: postgres
+    restart: always
+    build:
+      context: db
+    image: postgres4coffee
+    environment:
+        POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+        POSTGRES_USER: ${POSTGRES_USER}
+        DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
+        TZ: Asia/Taipei
+        # - PGDATA=${PGDATA}
+    volumes:
+      - D:/docker/coffee/db/postgresql/initdb.d:/docker-entrypoint-initdb.d
+      # - D:/docker/coffee/db/postgresql/pgdata:/var/lib/postgresql/data
+      - D:/docker/coffee/db/postgresql/postgres.conf:/etc/postgresql/postgresql.conf
+
+      - postgres_database:/var/lib/postgresql/data:Z
+      # - pgdata:${PGDATA}
+    ports:
+      - "5432:5432"
+    networks:
+      - net
+
+  # dbadmin:
+  #   container_name: pgadmin4demo
+  #   image: dpage/pgadmin4
+  #   environment:
+  #     PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+  #     PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+  #   ports:
+  #     - "16543:80"
+  #   depends_on:
+  #     - db
+  #   networks:
+  #     - net
+
+  remote_host:
+    container_name: remote-host4coffee
+    image: remote-host4coffee
+    build:
+      context: centos7
+    volumes:
+      - D:\docker\coffee\centos7\PostgresqlToAWS-S3.sh:/tmp/PostgresqlToAWS-S3.sh
+    environment:
+      - TZ=Asia/Taipei
+    networks:
+      - net
+
+  jenkins:
+    container_name: jenkins4coffee
+    image: jenkins-ansible4coffee
+    build:
+      context: jenkins-ansible
+    ports:
+      - "8080:8080"
+    volumes:
+      - D:\docker\coffee\jenkins_home:/var/jenkins_home
+      - D:/docker/coffee/jenkins-ansible/id_rsa:/tmp/id_rsa
+    environment:
+      - TZ=Asia/Taipei
+    networks:
+      - net
+
+networks:
+  net:
+    driver: bridge
+
+volumes:
+    postgres_database:
+        external: true
