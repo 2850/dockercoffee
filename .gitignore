@@ -2,3 +2,5 @@ web/django/venv/
 web/django/.idea/
 .env
 jenkins_home/
+.gitignore
+.gitattributes
