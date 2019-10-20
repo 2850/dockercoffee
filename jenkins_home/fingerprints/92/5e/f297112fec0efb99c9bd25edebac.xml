@@ -1,0 +1,13 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2019-10-20 02:40:50.69 UTC</timestamp>
+  <md5sum>925ef297112fec0efb99c9bd25edebac</md5sum>
+  <fileName>Credential id=Postgres_password name=Postgres_password</fileName>
+  <usages>
+    <entry>
+      <string>backup-postgres</string>
+      <ranges>2-5</ranges>
+    </entry>
+  </usages>
+  <facets/>
+</fingerprint>

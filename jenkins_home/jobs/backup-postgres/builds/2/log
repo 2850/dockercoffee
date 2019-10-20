@@ -1,0 +1,23 @@
+Started by user [8mha:////4GoNoE4WZwbwFsEy5/gIhubqIXif1oxeeaazjxt3y577AAAAmB+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAy2EgYe/dLi1CL98sycnMxiAM9ptu7BAAAA[0mwillis
+Running as SYSTEM
+Building in workspace /var/jenkins_home/workspace/backup-postgres
+[SSH] script:
+Postgres_DB_HOST="db"
+PWD="/"
+AWS_BUCKET_NAME="**********-coffee"
+Postgres_DB_NAME=**********
+AWS_KEY=**********
+Postgres_DB_USER=**********
+Postgres_DB_PWD=**********
+
+/tmp/PostgresqlToAWS-S3.sh $Postgres_DB_HOST $Postgres_DB_PWD $Postgres_DB_NAME $Postgres_DB_USER $AWS_KEY $AWS_BUCKET_NAME
+
+[SSH] executing...
+Uploading your Postgresql：db-02-40-50.sql.gz backup to AWS S3
+upload failed: ../../tmp/db-02-40-50.sql.gz to s3://****-coffee/db-02-40-50.sql.gz An error occurred (InvalidAccessKeyId) when calling the PutObject operation: The AWS Access Key Id you provided does not exist in our records.
+
+[SSH] completed
+[SSH] exit-status: 1
+
+Build step 'Execute shell script on remote host using ssh' marked build as failure
+Finished: FAILURE

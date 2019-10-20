@@ -1,0 +1,13 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<fingerprint>
+  <timestamp>2019-10-20 02:40:50.109 UTC</timestamp>
+  <md5sum>7a3ff406155b4e50b04da0fd9c00bfdd</md5sum>
+  <fileName>Credential id=AWS_PASSWORD name=AWS_PASSWORD</fileName>
+  <usages>
+    <entry>
+      <string>backup-postgres</string>
+      <ranges>2</ranges>
+    </entry>
+  </usages>
+  <facets/>
+</fingerprint>
