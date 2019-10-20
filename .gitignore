@@ -1,5 +1,4 @@
 web/django/venv/
 web/django/.idea/
-web/
 .env
 jenkins_home/
