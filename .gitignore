@@ -4,3 +4,5 @@ web/django/.idea/
 jenkins_home/.cache
 .gitignore
 .gitattributes
+jenkins_home/logs/
+.log

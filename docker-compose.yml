@@ -49,18 +49,18 @@ services:
     networks:
       - net
 
-  # dbadmin:
-  #   container_name: pgadmin4demo
-  #   image: dpage/pgadmin4
-  #   environment:
-  #     PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
-  #     PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
-  #   ports:
-  #     - "16543:80"
-  #   depends_on:
-  #     - db
-  #   networks:
-  #     - net
+  dbadmin:
+    container_name: pgadmin4demo
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+    ports:
+      - "16543:80"
+    depends_on:
+      - db
+    networks:
+      - net
 
   remote_host:
     container_name: remote-host4coffee
