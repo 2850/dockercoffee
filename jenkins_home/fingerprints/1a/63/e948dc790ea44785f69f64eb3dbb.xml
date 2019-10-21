@@ -6,7 +6,7 @@
   <usages>
     <entry>
       <string>backup-postgres</string>
-      <ranges>3-5</ranges>
+      <ranges>3-6</ranges>
     </entry>
   </usages>
   <facets/>
