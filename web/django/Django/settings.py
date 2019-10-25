@@ -127,5 +127,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 PROJECT_DIR = os.path.dirname(__file__)
-STATIC_ROOT = os.path.join(PROJECT_DIR, '../static')    #正式環境的靜態目錄
+# STATIC_ROOT = os.path.join(PROJECT_DIR, '../static')    #正式環境的靜態目錄
+# MEDIA_ROOT = os.path.join(PROJECT_DIR, '../media')    #正式環境的靜態目錄
 STATIC_URL = '/static/'
+
+STATIC_ROOT = '/django/static'    #正式環境的靜態目錄
+MEDIA_ROOT = '/django/media'    #正式環境的靜態目錄
+
+# # as declared in NginX conf, it must match /opt/services/djangoapp/static/
+# STATIC_ROOT = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), 'static')
+print(STATIC_ROOT)
+# # do the same for media files, it must match /opt/services/djangoapp/media/
+# MEDIA_ROOT = os.path.join(os.path.dirname(os.path.dirname(BASE_DIR)), 'media')
+print(MEDIA_ROOT)

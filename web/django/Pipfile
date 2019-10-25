@@ -1,0 +1,36 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+astroid = "*"
+certifi = "*"
+chardet = "*"
+click = "*"
+colorama = "*"
+future = "*"
+idna = "*"
+isort = "*"
+itsdangerous = "*"
+lazy-object-proxy = "*"
+line-bot-sdk = "*"
+mccabe = "*"
+requests = "*"
+six = "*"
+typed-ast = "*"
+urllib3 = "*"
+virtualenv = "*"
+wrapt = "*"
+psycopg2 = "*"
+Flask = "*"
+Jinja2 = "*"
+MarkupSafe = "*"
+Werkzeug = "*"
+Django = "*"
+gunicorn = "*"
+
+[requires]
+python_version = "3.6"

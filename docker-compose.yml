@@ -1,30 +1,31 @@
 version: '3'
 services:
-  # web:
-  #   container_name: django
-  #   image: django4demo
-  #   build:
-  #     context: web
-  #   environment:
-  #       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-  #       POSTGRES_USER: ${POSTGRES_USER}
-  #       POSTGRES_PROT: ${POSTGRES_PROT}
-  #       POSTGRES_DB: ${POSTGRES_DB}
-  #       DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
-  #       DJANGO_SUPERUSER: ${DJANGO_SUPERUSER}
-  #       DJANGO_SUPEREMAIL: ${DJANGO_SUPEREMAIL}
-  #       DJANGO_SUPERPWD: ${DJANGO_SUPERPWD}
-  #   volumes:
-  #     - D:/docker/coffee/web/django/:/var/django
-  #     - D:/docker/coffee/web/settings.py:/var/django/Django/settings.py
-  #     - D:/docker/coffee/web/django/entrypoint.sh:/var/django/entrypoint.sh
-  #   command: ./entrypoint.sh
-  #   depends_on:
-  #     - dbadmin
-  #   ports:
-  #     - "8000:8000"
-  #   networks:
-  #     - net
+  web:
+    container_name: django
+    image: django4demo
+    build:
+      context: web
+    environment:
+        POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+        POSTGRES_USER: ${POSTGRES_USER}
+        POSTGRES_PROT: ${POSTGRES_PROT}
+        POSTGRES_DB: ${POSTGRES_DB}
+        DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
+        DJANGO_SUPERUSER: ${DJANGO_SUPERUSER}
+        DJANGO_SUPEREMAIL: ${DJANGO_SUPEREMAIL}
+        DJANGO_SUPERPWD: ${DJANGO_SUPERPWD}
+    volumes:
+      - D:/docker/coffee/web/django/:/var/django
+      - D:/docker/coffee/web/settings.py:/var/django/Django/settings.py
+      - D:/docker/coffee/web/django/entrypoint.sh:/var/django/entrypoint.sh
+      - D:/docker/coffee/web/django/Django/setting.py:/var/django/Django/setting.py
+    command: ./entrypoint.sh
+    depends_on:
+      - dbadmin
+    # ports:
+    #   - "8000:8000"
+    networks:
+      - net
   db:
     container_name: postgres
     restart: always
@@ -88,6 +89,17 @@ services:
       - TZ=Asia/Taipei
     networks:
       - net
+
+  nginx:
+      image: nginx:latest
+      ports:
+        - 8000:80
+      volumes:
+        - D:/docker/coffee/nginx/conf.d:/etc/nginx/conf.d
+      depends_on:
+        - web
+      networks:
+        - net
 
 networks:
   net:

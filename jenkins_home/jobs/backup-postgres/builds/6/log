@@ -13,3 +13,5 @@ Postgres_DB_PWD=**********
 /tmp/PostgresqlToAWS-S3.sh $Postgres_DB_HOST $Postgres_DB_PWD $Postgres_DB_NAME $Postgres_DB_USER $AWS_KEY $AWS_BUCKET_NAME
 
 [SSH] executing...
+Password: Build was aborted
+Finished: ABORTED
